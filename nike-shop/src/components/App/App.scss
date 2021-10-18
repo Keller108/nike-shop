@@ -1,0 +1,40 @@
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 45px;
+  background-color: #E7F6FF;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1080px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.main-slider {
+  width: 100%;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  padding: 50px;
+  margin: 0;
+
+  img {
+    object-position: center;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-size: 0;
+  }
+}
