@@ -1,5 +1,6 @@
 import React from "react";
 import './Main.scss';
+import Card from '../Card/Card';
 
 function Main () {
     return (
@@ -8,10 +9,12 @@ function Main () {
                 <h1>
                     Все кроссовки
                 </h1>
-                <input type="text" defaultValue="Поиск..."/>
+                <input type="text" placeholder="Поиск..."/>
             </div>    
-            <ul>
-            
+            <ul className="cards">
+                <Card />
+                <Card />
+                <Card />
             </ul>
         </main>
     )

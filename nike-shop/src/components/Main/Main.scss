@@ -1,5 +1,8 @@
 .main {
+    width: 100%;
     padding: 45px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .main__top {
@@ -12,6 +15,7 @@
     margin-bottom: 35px;
 
     h1 {
+        display: inline-flex;
         font-size: 32px;
         font-weight: bold;
         margin: 0;
@@ -19,6 +23,7 @@
     }
 
     input {
+        height: 45px;
         border-radius: 10px;
         margin: 0;
         padding-left: 20px;
@@ -27,7 +32,17 @@
         
 
         &::placeholder {
-            color: #F3F3F3;
+            color: #C4C4C4;
         }
     }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(1fr, 250px));
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }

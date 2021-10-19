@@ -8,6 +8,7 @@
     padding: 35px;
     background-color: #fff;
     border-bottom: 1px solid #EAEAEA;
+    box-sizing: border-box;
 }
 
 .header__logo-wrapper {
@@ -115,11 +116,6 @@
 
     &:hover {
         background-image: url("../../images/heart-red.svg");
-        background-size: 24px;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: 0;
-        font-size: 0;
     }
 }
 
@@ -140,10 +136,5 @@
 
     &:hover {
         background-image: url("../../images/acc-red.svg");
-        background-size: 24px;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: 0;
-        font-size: 0;
     }
 }
