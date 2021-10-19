@@ -4,6 +4,7 @@ import './Card.scss';
 function Card({imgPath}) {
     return (
         <li className="card">
+            <button className="card__like-btn" type="button" aria-label="like button" />
             <img src={imgPath} alt="Фото товара"/>
             <h2>
                 Мужские Кроссовки Nike Blazer Mid Suede

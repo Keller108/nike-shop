@@ -1,11 +1,11 @@
 .main {
     width: 100%;
     padding: 45px;
-    margin: 0 auto;
+    margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-start;
 }
 
@@ -39,4 +39,18 @@
             color: #C4C4C4;
         }
     }
+}
+
+.cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    // display: flex;
+    // flex-flow: row wrap;
+    // align-items: flex-start;
+    // justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }

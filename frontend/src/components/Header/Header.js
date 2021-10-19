@@ -1,6 +1,6 @@
 import React from "react";
 import './Header.scss';
-import logoPath from '../../images/nike-icon.svg';
+import logoPath from '../../images/nike-logo.png';
 
 function Header () {
     return (
