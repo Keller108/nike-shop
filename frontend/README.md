@@ -1,4 +1,4 @@
-###Frontend-проект - магазин кросовок.
+### Frontend-проект - магазин кросовок.
 
 ![image](https://user-images.githubusercontent.com/34595724/138552468-244031e8-8535-4194-a8ef-b20adf47a8db.png)
 
