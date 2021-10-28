@@ -1,7 +1,35 @@
 .drawer-overlay {
     position: fixed; 
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: rgba(0,0,0,.4);
+    z-index: 3;
+}
+
+.drawer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    min-width: 385px;
+    background-color: #fff;
+    padding: 75px 50px;
+
+}
+
+.drawer__go-pay {
+    outline: none;
+    border: none;
+    background-color: #9DD458;
+    border-radius: 18px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
 }

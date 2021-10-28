@@ -1,4 +1,5 @@
 import React from 'react'
+import './Drawer.scss';
 
 function Drawer() {
     return (
@@ -13,7 +14,30 @@ function Drawer() {
                     </li>
                 </ul>
                 <div className="drawer__amount-wrapper">
-                    
+                    <div className="drawer__amount-content">
+                        <p className="drawer__amount-title">
+                            Итого
+                        </p>
+                        <div className="drawer__dots"></div>
+                        <p className="drawer__amout-price">
+                            21 432 руб.
+                        </p>
+                    </div>
+                    <div className="drawer__amount-content">
+                        <p className="drawer__amount-title">
+                            Налог 5%
+                        </p>
+                        <div className="drawer__dots"></div>
+                        <p className="drawer__amout-price">
+                            1074 руб.
+                        </p>
+                    </div>
+                    <button 
+                        type="button"
+                        className="drawer__go-pay"
+                    >
+                        Оформить заказ    
+                    </button>    
                 </div>
             </div>
         </div>
