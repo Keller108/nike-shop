@@ -2,7 +2,7 @@ import React from "react";
 import './Header.scss';
 import logoPath from '../../images/nike-logo.png';
 
-function Header () {
+function Header ({onCartOpen}) {
     return (
         <header className="header">
           <div className="header__logo-wrapper">
@@ -18,7 +18,7 @@ function Header () {
           </div>
           <ul className="header__btn-list">
                 <li>
-                    <button className="header__cart-btn transparent-link" type="button">1205&nbsp;руб.</button>
+                    <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">1205&nbsp;руб.</button>
                 </li>
                 <li>
                     <button className="header__favourite-btn" type="button"></button>
