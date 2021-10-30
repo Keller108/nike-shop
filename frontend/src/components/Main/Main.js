@@ -7,6 +7,18 @@ import cardThreeImg from '../../images/sneakers/3.jpg';
 import cardFourImg from '../../images/sneakers/4.jpg';
 
 function Main () {
+
+    const cardsArray = [
+        {
+          name: 'Мужские Кроссовки Nike Blazer Mid Suede',
+          price: 12999,
+        },
+        {
+          name: 'Мужские Кроссовки Nike Air Max 270',
+          price: 15600,
+        }
+      ]
+    
     return (
         <main className="main">
             <div className="main__top">
@@ -15,8 +27,17 @@ function Main () {
                 </h1>
                 <input type="text" placeholder="Поиск..."/>
             </div>    
-            <ul className="cards">
-                <Card 
+            <ul className="cards">{cardsArray.map((obj) => 
+                    <Card/>
+                )}
+            </ul>
+        </main>
+    )
+};
+
+export default Main;
+
+                {/* <Card 
                     imgPath={cardOneImg}
                 />
                 <Card 
@@ -24,19 +45,4 @@ function Main () {
                 />
                 <Card 
                     imgPath={cardThreeImg}
-                />
-                <Card 
-                    imgPath={cardFourImg}
-                />
-                <Card 
-                    imgPath={cardFourImg}
-                />
-                <Card 
-                    imgPath={cardFourImg}
-                />
-            </ul>
-        </main>
-    )
-};
-
-export default Main;
+                /> */}
