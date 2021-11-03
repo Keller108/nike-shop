@@ -1,7 +1,7 @@
 import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
-import {cardsArray} from '../../Products/products';
+import {cardsArray} from '../../utils/products.js';
 
 function Main () {
     

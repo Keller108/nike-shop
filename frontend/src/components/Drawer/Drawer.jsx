@@ -1,7 +1,6 @@
 import React from 'react'
 import './Drawer.scss';
 import CardItem from '../CartItem/CartItem';
-import itemImg1 from '../../images/sneakers/1.jpg';
 
 function Drawer({isOpen, onCartClose}) {
     return (
@@ -14,7 +13,7 @@ function Drawer({isOpen, onCartClose}) {
                     </h2>
                     <ul className="drawer__list">
                         <CardItem
-                            itemImage={itemImg1}
+                            itemImage="/sneakers/1.jpg"
                             itemTitle='Мужские Кроссовки Nike Blazer Mid Suede'
                             itemPrice='12 999'
                         />
