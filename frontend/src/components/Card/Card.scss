@@ -104,4 +104,9 @@
     border: none;
     outline: none;
     cursor: pointer;
+    transition: all .3s ;
+}
+
+.card__btn-plus_added {
+    background-image: url('../../images/btn-checked.svg');
 }

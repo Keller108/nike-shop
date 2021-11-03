@@ -2,6 +2,12 @@ import React from 'react'
 import './Card.scss';
 
 function Card({imgPath, cardName, cardPrice}) {
+    const [isAdded, setIsAdded] = React.useState(false);
+
+    const handleAddCardToDrawer = () => {
+        setIsAdded(!isAdded);
+    };
+    
     return (
         <li className="card">
             <button className="card__like-btn" type="button" aria-label="like button" />
@@ -16,7 +22,7 @@ function Card({imgPath, cardName, cardPrice}) {
                         {cardPrice} руб.
                     </b>
                 </div>
-                <button className="card__btn-plus" type="button" aria-label="button add"/>
+                <button onClick={handleAddCardToDrawer} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
             </div>
         </li>
     )
