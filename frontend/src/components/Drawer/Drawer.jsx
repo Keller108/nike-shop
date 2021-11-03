@@ -3,6 +3,7 @@ import './Drawer.scss';
 import CardItem from '../CartItem/CartItem';
 
 function Drawer({ isOpen, onCartClose, items }) {
+
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">

@@ -13,7 +13,7 @@ function App() {
   };
 
   const handleAddToCart = (obj) => {
-    setCartItems([...cartItems, obj])
+    setCartItems(prev => [...prev, obj]);
   };
 
   return (

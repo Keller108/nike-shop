@@ -13,7 +13,10 @@ function CartItem({itemImage, itemTitle, itemPrice}) {
                     {itemPrice} руб.
                  </p>
             </div>
-            <button className="drawer__remove-item-btn" type="button" aria-label="remove item from drawer"/>
+            <button 
+                className="drawer__remove-item-btn"
+                type="button"
+                aria-label="remove item from drawer"/>
         </li>
     )
 }
