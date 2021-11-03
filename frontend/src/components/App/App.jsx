@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="app">
-      <div class="project-container">
+      <div className="project-container">
         <Drawer isOpen={isCartOpen} onCartClose={handleDrawerOpen}/>
         <Header onCartOpen={handleDrawerOpen} />
         <Main />
