@@ -1,6 +1,6 @@
 import React from "react";
 import './Main.scss';
-import Card from '../Card/Card';
+import Card from '../Card/Card.jsx';
 import {cardsArray} from '../../Products/products';
 
 function Main () {

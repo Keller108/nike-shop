@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Drawer from '../Drawer/Drawer';
+import Header from '../Header/Header.jsx';
+import Main from '../Main/Main.jsx';
+import Drawer from '../Drawer/Drawer.jsx';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
