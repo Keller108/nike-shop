@@ -2,14 +2,10 @@ import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
 
-function Main () {
+function Main ({ onPlus }) {
     const [items, setItems] = React.useState([]);
 
     React.useEffect(() => {
-        itemsApi()
-    }, [])
-
-    function itemsApi() {
         fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
             .then(res => {
                 return res.json();
@@ -18,7 +14,7 @@ function Main () {
                 setItems(json);
             })
             .catch(err => console.log(err));
-    }
+    }, []);
 
     return (
         <main className="main">
@@ -34,6 +30,7 @@ function Main () {
                         cardPrice={card.price}
                         imgPath={card.img}
                         key={index}
+                        onPlus={(obj) => onPlus(obj)}
                     />
                 )}
             </ul>

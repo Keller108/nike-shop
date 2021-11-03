@@ -1,13 +1,14 @@
 import React from 'react'
 import './Card.scss';
 
-function Card({imgPath, cardName, cardPrice}) {
+function Card({ imgPath, cardName, cardPrice, onPlus }) {
     const [isAdded, setIsAdded] = React.useState(false);
 
     const handleAddCardToDrawer = () => {
+        onPlus({ cardName, cardPrice, imgPath});
         setIsAdded(!isAdded);
     };
-    
+
     return (
         <li className="card">
             <button className="card__like-btn" type="button" aria-label="like button" />

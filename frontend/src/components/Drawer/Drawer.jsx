@@ -2,7 +2,7 @@ import React from 'react'
 import './Drawer.scss';
 import CardItem from '../CartItem/CartItem';
 
-function Drawer({isOpen, onCartClose}) {
+function Drawer({ isOpen, onCartClose, items }) {
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
@@ -12,11 +12,17 @@ function Drawer({isOpen, onCartClose}) {
                         Корзина
                     </h2>
                     <ul className="drawer__list">
-                        <CardItem
-                            itemImage="/sneakers/1.jpg"
-                            itemTitle='Мужские Кроссовки Nike Blazer Mid Suede'
-                            itemPrice='12 999'
-                        />
+                        {
+                            items.map((card, index) => 
+                                <CardItem
+                                    itemTitle={card.cardName}
+                                    itemPrice={card.cardPrice}
+                                    itemImage={card.imgPath}
+                                    key={index}
+                                />
+                            )
+                        }
+                        
                     </ul>
                 </div>
                 <div className="drawer__amount-wrapper">
