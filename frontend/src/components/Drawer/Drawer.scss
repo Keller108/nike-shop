@@ -5,8 +5,8 @@
     align-items: stretch;
     justify-content: flex-end;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     background-color: rgba(0,0,0,.4);
     z-index: -1;
@@ -71,9 +71,10 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    max-height: 600px;
     margin: 0;
-    padding: 20px 0;
-    overflow: scroll !important;
+    padding: 20px 10px 20px 0;
+    overflow: scroll;
 }
 
 .drawer__amount-content {
