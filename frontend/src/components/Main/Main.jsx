@@ -4,6 +4,7 @@ import Card from '../Card/Card.jsx';
 
 function Main ({ onPlus }) {
     const [items, setItems] = React.useState([]);
+    const [searchValue, setSearchValue] = React.useState('')
 
     React.useEffect(() => {
         fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
@@ -16,13 +17,23 @@ function Main ({ onPlus }) {
             .catch(err => console.log(err));
     }, []);
 
+    const onChangeSearchInput = (event) => {
+        // console.log(event.target.value)
+        setSearchValue(event.target.value)
+    }
+
     return (
         <main className="main">
             <div className="main__top">
                 <h1>
-                    Все кроссовки
+                    {searchValue ? `Поиск по запросу "${searchValue}"` : 'Все кросовки'}
                 </h1>
-                <input type="text" placeholder="Поиск..."/>
+                <input
+                    onChange={onChangeSearchInput}
+                    value={searchValue}
+                    type="text"
+                    placeholder="Поиск..."
+                />
             </div>    
             <ul className="cards">{items.map((card, index) => 
                     <Card
