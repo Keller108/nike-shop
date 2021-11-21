@@ -32,7 +32,7 @@ function Main ({ onPlus }) {
                 <h1>
                     {searchValue ? `Поиск по запросу "${searchValue}"` : 'Все кросовки'}
                 </h1>
-                <img onClick={clearInput} src={searchClear} className="main__clear-btn" alt="clear btn"/>
+                {searchValue && <img onClick={clearInput} src={searchClear} className="main__clear-btn" alt="clear btn"/>}
                 <input
                     onChange={onChangeSearchInput}
                     value={searchValue}
@@ -40,7 +40,9 @@ function Main ({ onPlus }) {
                     placeholder="Поиск..."
                 />
             </div>    
-            <ul className="cards">{items.map((card, index) => 
+            <ul className="cards">{items
+                .filter((item) => item.name.includes(searchValue))
+                .map((card, index) => 
                     <Card
                         cardName={card.name}
                         cardPrice={card.price}
