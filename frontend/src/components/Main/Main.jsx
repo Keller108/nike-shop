@@ -1,6 +1,7 @@
 import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
+import searchClear from '../../images/btn-remove.svg';
 
 function Main ({ onPlus }) {
     const [items, setItems] = React.useState([]);
@@ -18,8 +19,11 @@ function Main ({ onPlus }) {
     }, []);
 
     const onChangeSearchInput = (event) => {
-        // console.log(event.target.value)
-        setSearchValue(event.target.value)
+        setSearchValue(event.target.value);
+    };
+
+    const clearInput = (event) => {
+        setSearchValue(event.target.value = '');
     }
 
     return (
@@ -28,6 +32,7 @@ function Main ({ onPlus }) {
                 <h1>
                     {searchValue ? `Поиск по запросу "${searchValue}"` : 'Все кросовки'}
                 </h1>
+                <img onClick={clearInput} src={searchClear} className="main__clear-btn" alt="clear btn"/>
                 <input
                     onChange={onChangeSearchInput}
                     value={searchValue}

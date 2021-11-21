@@ -10,6 +10,7 @@
 }
 
 .main__top {
+    position: relative;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -38,6 +39,17 @@
         &::placeholder {
             color: #C4C4C4;
         }
+    }
+
+    .main__clear-btn {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 13px;
+        top: 13px;
+        margin: 0;
+        font-size: 0;
+        cursor: pointer;
     }
 }
 
