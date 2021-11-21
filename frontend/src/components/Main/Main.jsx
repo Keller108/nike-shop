@@ -5,7 +5,8 @@ import searchClear from '../../images/btn-remove.svg';
 
 function Main ({ onPlus }) {
     const [items, setItems] = React.useState([]);
-    const [searchValue, setSearchValue] = React.useState('')
+    const [searchValue, setSearchValue] = React.useState('');
+    const [isAdded, setIsAdded] = React.useState(false);
 
     React.useEffect(() => {
         fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
@@ -24,6 +25,10 @@ function Main ({ onPlus }) {
 
     const clearInput = (event) => {
         setSearchValue(event.target.value = '');
+    }
+
+    const onCardAdd = obj => {
+        onPlus(obj);
     }
 
     return (
@@ -48,7 +53,7 @@ function Main ({ onPlus }) {
                         cardPrice={card.price}
                         imgPath={card.img}
                         key={index}
-                        onPlus={(obj) => onPlus(obj)}
+                        onCardPlus={onCardAdd}
                     />
                 )}
             </ul>

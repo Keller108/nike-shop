@@ -1,11 +1,11 @@
 import React from 'react'
 import './Card.scss';
 
-function Card({ imgPath, cardName, cardPrice, onPlus }) {
+function Card({ imgPath, cardName, cardPrice, onCardPlus }) {
     const [isAdded, setIsAdded] = React.useState(false);
 
     const handleAddCardToDrawer = () => {
-        onPlus({ cardName, cardPrice, imgPath});
+        onCardPlus({ cardName, cardPrice, imgPath});
         setIsAdded(!isAdded);
     };
 

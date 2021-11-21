@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartItem.scss';
 
-function CartItem({itemImage, itemTitle, itemPrice}) {
+function CartItem({itemImage, itemTitle, itemPrice, onDelete }) {
     return (
         <li className="drawer__item">
             <img className="drawer__item-img" src={itemImage} alt={itemTitle}/>
@@ -14,6 +14,7 @@ function CartItem({itemImage, itemTitle, itemPrice}) {
                  </p>
             </div>
             <button 
+                onClick={onDelete}
                 className="drawer__remove-item-btn"
                 type="button"
                 aria-label="remove item from drawer"/>

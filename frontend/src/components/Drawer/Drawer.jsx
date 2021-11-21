@@ -4,6 +4,10 @@ import CardItem from '../CartItem/CartItem';
 
 function Drawer({ isOpen, onCartClose, items }) {
 
+    const onCardDelete = evt => {
+        evt.target.parentNode.remove()
+    }
+
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
@@ -20,6 +24,7 @@ function Drawer({ isOpen, onCartClose, items }) {
                                     itemPrice={card.cardPrice}
                                     itemImage={card.imgPath}
                                     key={index}
+                                    onDelete={onCardDelete}
                                 />
                             )
                         }
