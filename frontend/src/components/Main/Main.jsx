@@ -41,7 +41,7 @@ function Main ({ onPlus }) {
                 />
             </div>    
             <ul className="cards">{items
-                .filter((item) => item.name.includes(searchValue))
+                .filter((item) => item.name.toLowerCase().includes(searchValue))
                 .map((card, index) => 
                     <Card
                         cardName={card.name}
