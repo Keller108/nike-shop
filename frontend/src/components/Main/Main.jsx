@@ -3,10 +3,9 @@ import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 
-function Main ({ onPlus }) {
+function Main ({ onPlus, onCardDelete }) {
     const [items, setItems] = React.useState([]);
     const [searchValue, setSearchValue] = React.useState('');
-    const [isAdded, setIsAdded] = React.useState(false);
 
     React.useEffect(() => {
         fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
@@ -54,6 +53,7 @@ function Main ({ onPlus }) {
                         imgPath={card.img}
                         key={index}
                         onCardPlus={onCardAdd}
+                        onCardDelete={onCardDelete}
                     />
                 )}
             </ul>

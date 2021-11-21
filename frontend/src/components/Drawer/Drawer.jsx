@@ -2,11 +2,7 @@ import React from 'react'
 import './Drawer.scss';
 import CardItem from '../CartItem/CartItem';
 
-function Drawer({ isOpen, onCartClose, items }) {
-
-    const onCardDelete = evt => {
-        evt.target.parentNode.remove()
-    }
+function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
 
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>

@@ -16,6 +16,10 @@ function App() {
     setCartItems(prev => [...prev, obj]);
   };
 
+  const onCardDelete = evt => {
+    evt.target.parentNode.remove()
+  };
+
   return (
     <div className="app">
       <div className="project-container">
@@ -23,10 +27,12 @@ function App() {
           isOpen={isCartOpen}
           onCartClose={handleDrawerOpen}
           items={cartItems}
+          onCardDelete={onCardDelete}
         />
         <Header onCartOpen={handleDrawerOpen} />
         <Main 
           onPlus={handleAddToCart}
+          onCardDelete={onCardDelete}
         />
       </div>
     </div>
