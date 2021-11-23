@@ -1,21 +1,27 @@
 import React from "react";
+import axios from 'axios';
 import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 
-function Main ({ onPlus, onCardDelete }) {
-    const [items, setItems] = React.useState([]);
+function Main ({ onPlus, setItems, items, onCardDelete }) {
     const [searchValue, setSearchValue] = React.useState('');
 
     React.useEffect(() => {
-        fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
-            .then(res => {
-                return res.json();
-                })
-            .then(json => {
-                setItems(json);
-            })
-            .catch(err => console.log(err));
+        // fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
+        //     .then(res => {
+        //         return res.json();
+        //         })
+        //     .then(json => {
+        //         setItems(json);
+        //     })
+        //     .catch(err => console.log(err));
+
+        axios.get('https://61822cb784c2020017d89ce5.mockapi.io/items')
+            .then((res) => {
+                setItems(res.data)
+            });
+
     }, []);
 
     const onChangeSearchInput = (event) => {

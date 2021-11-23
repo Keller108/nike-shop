@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './App.scss';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
@@ -7,17 +8,20 @@ import Drawer from '../Drawer/Drawer.jsx';
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
+  const [items, setItems] = React.useState([]);
 
   const handleDrawerOpen = () => {
     setIsCartOpen(!isCartOpen);
   };
 
   const handleAddToCart = (obj) => {
+    axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
     setCartItems(prev => [...prev, obj]);
   };
 
   const onCardDelete = evt => {
-    evt.target.parentNode.remove()
+    // evt.target.parentNode.remove()
+    console.log(evt.target)
   };
 
   return (
@@ -33,6 +37,8 @@ function App() {
         <Main 
           onPlus={handleAddToCart}
           onCardDelete={onCardDelete}
+          setItems={setItems}
+          items={items}
         />
       </div>
     </div>
