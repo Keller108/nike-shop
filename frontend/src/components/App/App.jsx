@@ -24,6 +24,13 @@ function App() {
     console.log(evt.target)
   };
 
+  React.useEffect(() => {
+    axios.get('https://61822cb784c2020017d89ce5.mockapi.io/cart')
+            .then((res) => {
+              setCartItems(res.data)
+            });
+  },[]);
+
   return (
     <div className="app">
       <div className="project-container">
