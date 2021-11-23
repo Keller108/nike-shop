@@ -8,10 +8,20 @@ function Main ({ onPlus, setItems, items, onCardDelete }) {
     const [searchValue, setSearchValue] = React.useState('');
 
     React.useEffect(() => {
+        // fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
+        //     .then(res => {
+        //         return res.json();
+        //         })
+        //     .then(json => {
+        //         setItems(json);
+        //     })
+        //     .catch(err => console.log(err));
+
         axios.get('https://61822cb784c2020017d89ce5.mockapi.io/items')
             .then((res) => {
                 setItems(res.data)
             });
+
     }, []);
 
     const onChangeSearchInput = (event) => {

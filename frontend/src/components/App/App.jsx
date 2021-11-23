@@ -19,9 +19,9 @@ function App() {
     setCartItems(prev => [...prev, obj]);
   };
 
-  const onCardDelete = evt => {
-    // evt.target.parentNode.remove()
-    console.log(evt.target)
+  const onCardDelete = id => {
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart${id}`);
+    // setCartItems(prev => [...prev, obj]);
   };
 
   React.useEffect(() => {
