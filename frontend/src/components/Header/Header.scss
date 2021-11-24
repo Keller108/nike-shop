@@ -9,6 +9,10 @@
     background-color: #fff;
     border-bottom: 1px solid #EAEAEA;
     box-sizing: border-box;
+
+    * {
+        text-decoration: none;
+    }
 }
 
 .header__logo-wrapper {
@@ -69,6 +73,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
+    a {
+        margin-right: 25px;
+    }
 
     li {
         padding: 0;

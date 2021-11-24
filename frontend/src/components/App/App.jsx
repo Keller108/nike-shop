@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
 import Header from '../Header/Header.jsx';
@@ -47,13 +48,21 @@ function App() {
           onCardDelete={onCardDelete}
         />
         <Header onCartOpen={handleDrawerOpen} />
-        <Main 
-          onPlus={handleAddToCart}
-          onCardDelete={onCardDelete}
-          setItems={setItems}
-          items={items}
-          onAddToFavourite={handleAddToFavourite}
-        />
+        <Routes>
+          <Route
+            exact path="/"
+            element={<Main
+              onPlus={handleAddToCart}
+              onCardDelete={onCardDelete}
+              setItems={setItems}
+              items={items}
+              onAddToFavourite={handleAddToFavourite}
+            />}
+            //  
+          >
+          </Route>
+          <Route exact path="/favourites">Привет</Route>
+        </Routes>
       </div>
     </div>
   );
