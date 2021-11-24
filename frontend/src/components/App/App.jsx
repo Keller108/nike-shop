@@ -10,7 +10,7 @@ import Favourites from '../Favourites/Favourites.jsx';
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
-  const [favouries, setFavouries] = React.useState([]);
+  const [favouries, setFavourites] = React.useState([]);
   const [items, setItems] = React.useState([]);
 
   const handleDrawerOpen = () => {
@@ -29,7 +29,7 @@ function App() {
 
   const handleAddToFavourite = (obj) => {
     axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
-    setFavouries(prev => [...prev, obj]);
+    setFavourites(prev => [...prev, obj]);
   };
 
   React.useEffect(() => {
@@ -52,18 +52,25 @@ function App() {
         <Routes>
           <Route
             exact path="/"
-            element={<Main
-              onPlus={handleAddToCart}
-              onCardDelete={onCardDelete}
-              setItems={setItems}
-              items={items}
-              onAddToFavourite={handleAddToFavourite}
-            />}
+            element={
+              <Main
+                onPlus={handleAddToCart}
+                onCardDelete={onCardDelete}
+                setItems={setItems}
+                items={items}
+                onAddToFavourite={handleAddToFavourite}
+              />
+            }
             //  
           >
           </Route>
           <Route exact path="/favourites" 
-            element={<Favourites/>}
+            element={
+              <Favourites
+                favouries={favouries}
+                setFavourites={setFavourites}
+              />
+            }
           />
         </Routes>
       </div>
