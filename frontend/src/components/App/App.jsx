@@ -5,6 +5,7 @@ import './App.scss';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
 import Drawer from '../Drawer/Drawer.jsx';
+import Favourites from '../Favourites/Favourites.jsx';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
@@ -61,7 +62,9 @@ function App() {
             //  
           >
           </Route>
-          <Route exact path="/favourites">Привет</Route>
+          <Route exact path="/favourites" 
+            element={<Favourites/>}
+          />
         </Routes>
       </div>
     </div>

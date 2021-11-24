@@ -1,0 +1,19 @@
+.main__top_left {
+    justify-content: flex-start;
+}
+
+.main__btn-back {
+    width: 28px;
+    height: 28px;
+    background-color: #bebebe;
+    border: 1px solid #bebebe;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    background-image: url("../../images/arrow.svg");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(180deg);
+    margin-right: 25px;
+}
