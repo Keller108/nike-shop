@@ -20,7 +20,7 @@ function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
                                     itemPrice={card.cardPrice}
                                     itemImage={card.imgPath}
                                     key={index}
-                                    onDelete={onCardDelete}
+                                    onDelete={() => onCardDelete(card.id)}
                                 />
                             )
                         }

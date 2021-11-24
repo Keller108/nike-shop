@@ -20,8 +20,8 @@ function App() {
   };
 
   const onCardDelete = id => {
-    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart${id}`);
-    // setCartItems(prev => [...prev, obj]);
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${id}`);
+    setCartItems(prev => (prev).filter(item => item.id !== id));
   };
 
   React.useEffect(() => {
