@@ -1,7 +1,7 @@
 import React from 'react'
 import './Card.scss';
 
-function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete }) {
+function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete, onAddFavourite }) {
     const [isAdded, setIsAdded] = React.useState(false);
     const [isFavourite, setIsFavourite] = React.useState(false)
 
@@ -16,8 +16,9 @@ function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete }) {
     }
 
     const handleLikeCard = () => {
+        onAddFavourite({ cardName, cardPrice, imgPath});
         setIsFavourite(!isFavourite)
-    }
+    };
 
     return (
         <li className="card">
@@ -25,7 +26,7 @@ function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete }) {
                 onClick={handleLikeCard}
                 className={isFavourite ? `card__like-btn card__like-btn_liked` : `card__like-btn`}
                 type="button"
-                aria-label="like button"
+                aria-label="like card button"
             />
             <img src={imgPath} alt="Фото товара"/>
             <h2>

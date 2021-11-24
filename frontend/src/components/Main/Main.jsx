@@ -4,7 +4,7 @@ import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 
-function Main ({ onPlus, setItems, items, onCardDelete }) {
+function Main ({ onPlus, setItems, items, onCardDelete, onAddToFavourite }) {
     const [searchValue, setSearchValue] = React.useState('');
 
     React.useEffect(() => {
@@ -36,6 +36,10 @@ function Main ({ onPlus, setItems, items, onCardDelete }) {
         onPlus(obj);
     }
 
+    const onFavouriteAdd = obj => {
+        onAddToFavourite(obj);
+    }
+
     return (
         <main className="main">
             <div className="main__top">
@@ -60,6 +64,7 @@ function Main ({ onPlus, setItems, items, onCardDelete }) {
                         key={index}
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
+                        onAddFavourite={onFavouriteAdd}
                     />
                 )}
             </ul>

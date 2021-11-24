@@ -8,6 +8,7 @@ import Drawer from '../Drawer/Drawer.jsx';
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
+  const [favouries, setFavouries] = React.useState([]);
   const [items, setItems] = React.useState([]);
 
   const handleDrawerOpen = () => {
@@ -22,6 +23,11 @@ function App() {
   const onCardDelete = id => {
     axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${id}`);
     setCartItems(prev => (prev).filter(item => item.id !== id));
+  };
+
+  const handleAddToFavourite = (obj) => {
+    axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
+    setFavouries(prev => [...prev, obj]);
   };
 
   React.useEffect(() => {
@@ -46,6 +52,7 @@ function App() {
           onCardDelete={onCardDelete}
           setItems={setItems}
           items={items}
+          onAddToFavourite={handleAddToFavourite}
         />
       </div>
     </div>
