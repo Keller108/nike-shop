@@ -49,11 +49,15 @@
     background-color: rgba(0,0,0,0);
     background-image: url("../../images/unliked.svg");
     background-position: center;
-    background-size: contain;
+    background-size: 28px;
     background-repeat: no-repeat;
     border: none;
     outline: none;
-    
+    cursor: pointer;
+}
+
+.card__like-btn_liked {
+    background-image: url("../../images/liked.svg");
 }
 
 .price-container {

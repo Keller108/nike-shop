@@ -3,6 +3,7 @@ import './Card.scss';
 
 function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete }) {
     const [isAdded, setIsAdded] = React.useState(false);
+    const [isFavourite, setIsFavourite] = React.useState(false)
 
     const handleAddCardToDrawer = () => {
         onCardPlus({ cardName, cardPrice, imgPath});
@@ -14,9 +15,18 @@ function Card({ imgPath, cardName, cardPrice, onCardPlus, onCardDelete }) {
         setIsAdded(!isAdded);
     }
 
+    const handleLikeCard = () => {
+        setIsFavourite(!isFavourite)
+    }
+
     return (
         <li className="card">
-            <button className="card__like-btn" type="button" aria-label="like button" />
+            <button
+                onClick={handleLikeCard}
+                className={isFavourite ? `card__like-btn card__like-btn_liked` : `card__like-btn`}
+                type="button"
+                aria-label="like button"
+            />
             <img src={imgPath} alt="Фото товара"/>
             <h2>
                 {cardName}
