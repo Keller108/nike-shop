@@ -4,14 +4,7 @@ import axios from 'axios';
 import './Favourites.scss';
 import Card from '../Card/Card.jsx';
 
-function Favourites({ favouries, setFavourites}) {
-
-    React.useEffect(() => {
-        axios.get('https://61822cb784c2020017d89ce5.mockapi.io/favourites')
-                .then((res) => {
-                    setFavourites(res.data)
-                });
-      },[]);
+function Favourites({ items, onDeleteFromFavourite }) {
 
     return (
         <div>
@@ -27,20 +20,22 @@ function Favourites({ favouries, setFavourites}) {
                     <h1>
                         Мои закладки
                     </h1>
-                    <ul className="cards">{
-                        favouries.map((card, index) => 
+                </div>
+                <ul className="cards">{
+                        items.map((card, index) => 
                             <Card
-                                cardName={card.name}
-                                cardPrice={card.price}
-                                imgPath={card.img}
-                                key={index + 1}
+                                name={card.name}
+                                price={card.price}
+                                img={card.img}
+                                key={index}
+                                isFavourited={true}
+                                onDeleteFromFavourite={onDeleteFromFavourite}
                                 // onCardPlus={onCardAdd}
                                 // onCardDelete={onCardDelete}
                                 // onAddFavourite={onFavouriteAdd}
                             />
                         )}
                     </ul>
-                </div>
             </main>
         </div>
     )

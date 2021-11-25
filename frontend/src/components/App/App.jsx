@@ -10,7 +10,7 @@ import Favourites from '../Favourites/Favourites.jsx';
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
-  const [favouries, setFavourites] = React.useState([]);
+  const [favourites, setFavourites] = React.useState([]);
   const [items, setItems] = React.useState([]);
 
   const handleDrawerOpen = () => {
@@ -32,11 +32,22 @@ function App() {
     setFavourites(prev => [...prev, obj]);
   };
 
+  const handleDeleteFromFavourite = obj => {
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
+  }
+
   React.useEffect(() => {
     axios.get('https://61822cb784c2020017d89ce5.mockapi.io/cart')
             .then((res) => {
               setCartItems(res.data)
             });
+
+    axios.get('https://61822cb784c2020017d89ce5.mockapi.io/favourites')
+    .then((res) => {
+        setFavourites(res.data);
+        console.log(res.data);
+    });
+
   },[]);
 
   return (
@@ -59,6 +70,7 @@ function App() {
                 setItems={setItems}
                 items={items}
                 onAddToFavourite={handleAddToFavourite}
+                onDeleteFromFavourite={handleDeleteFromFavourite}
               />
             }
             //  
@@ -67,8 +79,8 @@ function App() {
           <Route exact path="/favourites" 
             element={
               <Favourites
-                favouries={favouries}
-                setFavourites={setFavourites}
+                items={favourites}
+                onDeleteFromFavourite={handleDeleteFromFavourite}
               />
             }
           />

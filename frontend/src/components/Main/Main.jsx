@@ -4,7 +4,14 @@ import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 
-function Main ({ onPlus, setItems, items, onCardDelete, onAddToFavourite }) {
+function Main ({
+        onPlus,
+        setItems,
+        items,
+        onCardDelete,
+        onAddToFavourite,
+        onDeleteFromFavourite,
+    }) {
     const [searchValue, setSearchValue] = React.useState('');
 
     React.useEffect(() => {
@@ -58,13 +65,14 @@ function Main ({ onPlus, setItems, items, onCardDelete, onAddToFavourite }) {
                 .filter((item) => item.name.toLowerCase().includes(searchValue))
                 .map((card, index) => 
                     <Card
-                        cardName={card.name}
-                        cardPrice={card.price}
-                        imgPath={card.img}
+                        name={card.name}
+                        price={card.price}
+                        img={card.img}
                         key={index}
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
+                        onDeleteFromFavourite={onDeleteFromFavourite}
                     />
                 )}
             </ul>
