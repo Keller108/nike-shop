@@ -10,7 +10,6 @@ function Main ({
         items,
         onCardDelete,
         onAddToFavourite,
-        onDeleteFromFavourite,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
 
@@ -65,6 +64,7 @@ function Main ({
                 .filter((item) => item.name.toLowerCase().includes(searchValue))
                 .map((card, index) => 
                     <Card
+                        card={card}
                         name={card.name}
                         price={card.price}
                         img={card.img}
@@ -72,7 +72,6 @@ function Main ({
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
-                        onDeleteFromFavourite={onDeleteFromFavourite}
                     />
                 )}
             </ul>

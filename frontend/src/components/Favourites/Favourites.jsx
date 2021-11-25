@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './Favourites.scss';
 import Card from '../Card/Card.jsx';
 
@@ -24,12 +23,12 @@ function Favourites({ items, onDeleteFromFavourite }) {
                 <ul className="cards">{
                         items.map((card, index) => 
                             <Card
+                                card={card}
                                 name={card.name}
                                 price={card.price}
                                 img={card.img}
                                 key={index}
                                 isFavourited={true}
-                                onDeleteFromFavourite={onDeleteFromFavourite}
                                 // onCardPlus={onCardAdd}
                                 // onCardDelete={onCardDelete}
                                 // onAddFavourite={onFavouriteAdd}

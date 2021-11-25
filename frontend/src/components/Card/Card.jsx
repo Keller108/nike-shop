@@ -3,13 +3,13 @@ import './Card.scss';
 
 function Card({
     img,
+    card,
     name,
     price,
     onCardPlus,
     onCardDelete,
     onAddFavourite,
     isFavourited,
-    onDeleteFromFavourite,
 }) {
     const [isAdded, setIsAdded] = React.useState(false);
     const [isFavourite, setIsFavourite] = React.useState(false)
@@ -20,25 +20,19 @@ function Card({
     };
 
     const setCardState = (evt) => {
-        onCardDelete(evt);
+        onCardDelete(evt);  
         setIsAdded(!isAdded);
     };
 
     const handleLikeCard = () => {
-        onAddFavourite({ name, price, img});
+        onAddFavourite(card.name, card.price, card.img, card.id);
         setIsFavourite(!isFavourite);
-    };
-
-    const handleDeleteFromFavourite = (obj) => {
-        onDeleteFromFavourite(obj);
-        setIsFavourite(false);
-        isFavourited=false;
     };
     
     return (
         <li className="card">
             <button
-                onClick={isFavourited ? handleDeleteFromFavourite : handleLikeCard}
+                onClick={handleLikeCard}
                 className={ isFavourited ? `card__like-btn card__like-btn_liked` : isFavourite ? `card__like-btn card__like-btn_liked` : `card__like-btn`}
                 type="button"
                 aria-label="like card button"
