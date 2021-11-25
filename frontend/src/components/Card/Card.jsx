@@ -2,8 +2,8 @@ import React from 'react'
 import './Card.scss';
 
 function Card({
+    id,
     img,
-    card,
     name,
     price,
     onCardPlus,
@@ -25,7 +25,7 @@ function Card({
     };
 
     const handleLikeCard = () => {
-        onAddFavourite(card.name, card.price, card.img, card.id);
+        onAddFavourite({ name, price, img, id});
         setIsFavourite(!isFavourite);
     };
     

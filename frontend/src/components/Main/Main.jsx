@@ -64,10 +64,10 @@ function Main ({
                 .filter((item) => item.name.toLowerCase().includes(searchValue))
                 .map((card, index) => 
                     <Card
-                        card={card}
                         name={card.name}
                         price={card.price}
                         img={card.img}
+                        id={card.id}
                         key={index}
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}

@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import './Favourites.scss';
 import Card from '../Card/Card.jsx';
 
-function Favourites({ items, onDeleteFromFavourite }) {
+function Favourites({ items, onAddToFavourite }) {
+
+    const onFavouriteAdd = obj => {
+        onAddToFavourite(obj);
+    }
 
     return (
         <div>
@@ -23,7 +27,7 @@ function Favourites({ items, onDeleteFromFavourite }) {
                 <ul className="cards">{
                         items.map((card, index) => 
                             <Card
-                                card={card}
+                                id={card.id}
                                 name={card.name}
                                 price={card.price}
                                 img={card.img}
@@ -31,7 +35,7 @@ function Favourites({ items, onDeleteFromFavourite }) {
                                 isFavourited={true}
                                 // onCardPlus={onCardAdd}
                                 // onCardDelete={onCardDelete}
-                                // onAddFavourite={onFavouriteAdd}
+                                onAddFavourite={onFavouriteAdd}
                             />
                         )}
                     </ul>

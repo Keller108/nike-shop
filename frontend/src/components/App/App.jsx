@@ -30,13 +30,13 @@ function App() {
 
   const handleAddToFavourite = (obj) => {
 
-    axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
-    setFavourites(prev => [...prev, obj]);
-
-    // if (favourites.find(obj => obj.id === id)) {
-    //   axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${id}`);
-    // } 
-
+    if (favourites.find(obj => obj.id === obj.id)) {
+      axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
+      setFavourites(prev => (prev).filter(item => item.id !== obj.id));
+    } else {
+      axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
+      setFavourites(prev => [...prev, obj]);
+    }
   };
 
   React.useEffect(() => {
@@ -81,6 +81,7 @@ function App() {
             element={
               <Favourites
                 items={favourites}
+                onAddToFavourite={handleAddToFavourite}
               />
             }
           />
