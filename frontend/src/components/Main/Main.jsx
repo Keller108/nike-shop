@@ -28,7 +28,7 @@ function Main ({
                 setItems(res.data)
             });
 
-    }, []);
+    }, [setItems]);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
