@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -29,8 +28,7 @@ function App() {
   };
 
   const handleAddToFavourite = (obj) => {
-
-    if (favourites.find(obj => obj.id === obj.id)) {
+    if (favourites.find(favObj => favObj.id === obj.id)) {
       axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
       setFavourites(prev => (prev).filter(item => item.id !== obj.id));
     } else {

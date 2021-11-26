@@ -27,10 +27,7 @@ function Favourites({ items, onAddToFavourite }) {
                 <ul className="cards">{
                         items.map((card, index) => 
                             <Card
-                                id={card.id}
-                                name={card.name}
-                                price={card.price}
-                                img={card.img}
+                                {...card}
                                 key={index}
                                 isFavourited={true}
                                 // onCardPlus={onCardAdd}
