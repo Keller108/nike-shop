@@ -6,6 +6,7 @@ import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
 import Drawer from '../Drawer/Drawer.jsx';
 import Favourites from '../Favourites/Favourites.jsx';
+import Orders from '../Orders/Orders.jsx';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);
@@ -28,12 +29,16 @@ function App() {
   };
 
   const handleAddToFavourite = async (obj) => {
-    if (favourites.find(favObj => favObj.id === obj.id)) {
-      axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
-      setFavourites(prev => (prev).filter(item => item.id !== obj.id));
-    } else {
-      const {data} = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
-      setFavourites(prev => [...prev, data]);
+    try {
+      if (favourites.find(favObj => favObj.id === obj.id)) {
+        axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
+        setFavourites(prev => (prev).filter(item => item.id !== obj.id));
+      } else {
+        const {data} = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
+        setFavourites(prev => [...prev, data]);
+      }
+    } catch (err) {
+      alert('Не удалось добавить в фавориты');
     }
   };
 
@@ -83,6 +88,14 @@ function App() {
               />
             }
           />
+        <Route exact path="/orders" 
+            element={
+              <Orders
+                items={favourites}
+                onAddToFavourite={handleAddToFavourite}
+              />
+            }
+        />
         </Routes>
       </div>
     </div>

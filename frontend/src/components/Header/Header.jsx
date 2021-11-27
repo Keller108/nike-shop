@@ -28,9 +28,12 @@ function Header ({onCartOpen}) {
                       <button className="header__favourite-btn" type="button"></button>
                   </li>
                 </Link>
-                <li>
-                    <button className="header__acc-btn" type="button"></button>
-                </li>
+                <Link to="/orders">
+                  <li>
+                      <button className="header__acc-btn" type="button"></button>
+                  </li>
+                </Link>
+                
             </ul>
         </header>
     )
