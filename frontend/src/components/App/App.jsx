@@ -27,13 +27,13 @@ function App() {
     setCartItems(prev => (prev).filter(item => item.id !== id));
   };
 
-  const handleAddToFavourite = (obj) => {
+  const handleAddToFavourite = async (obj) => {
     if (favourites.find(favObj => favObj.id === obj.id)) {
       axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
       setFavourites(prev => (prev).filter(item => item.id !== obj.id));
     } else {
-      axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
-      setFavourites(prev => [...prev, obj]);
+      const {data} = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
+      setFavourites(prev => [...prev, data]);
     }
   };
 
