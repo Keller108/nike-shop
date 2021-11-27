@@ -20,8 +20,8 @@ function App() {
 
   const handleAddToCart = async (obj) => {
     try {
-      if (cartItems.find(cardObj => cardObj.id === obj.id)) {
-        setCartItems(prev => prev.filter(item => item.id !== obj.obj))
+      if (cartItems.find(cardObj => Number(cardObj.id) === Number(obj.id))) {
+        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.obj)))
       } else { 
         const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
         setCartItems(prev => [...prev, data]);

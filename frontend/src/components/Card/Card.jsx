@@ -15,7 +15,7 @@ function Card({
     const [isFavourite, setIsFavourite] = React.useState(false)
 
     const handleAddCardToDrawer = () => {
-        onCardPlus({ name, price, img});
+        onCardPlus({ name, price, img, id});
         setIsAdded(!isAdded);
     };
 
