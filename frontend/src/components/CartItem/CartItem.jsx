@@ -1,16 +1,21 @@
 import React from 'react';
 import './CartItem.scss';
 
-function CartItem({itemImage, itemTitle, itemPrice, onDelete }) {
+function CartItem({
+    img,
+    name,
+    price,
+    onDelete
+}) {
     return (
         <li className="drawer__item">
-            <img className="drawer__item-img" src={itemImage} alt={itemTitle}/>
+            <img className="drawer__item-img" src={img} alt={name}/>
             <div className="drawer__item-text-wrapper">
                 <p className="drawer__item-title">
-                    {itemTitle}
+                    {name}
                 </p>
                 <p className="drawer__item-price">
-                    {itemPrice} руб.
+                    {price} руб.
                  </p>
             </div>
             <button 

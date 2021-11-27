@@ -18,9 +18,17 @@ function App() {
     setIsCartOpen(!isCartOpen);
   };
 
-  const handleAddToCart = (obj) => {
-    axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
-    setCartItems(prev => [...prev, obj]);
+  const handleAddToCart = async (obj) => {
+    try {
+      if (cartItems.find(cardObj => cardObj.id === obj.id)) {
+        setCartItems(prev => prev.filter(item => item.id !== obj.obj))
+      } else { 
+        const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
+        setCartItems(prev => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Не получилось добавить карточку в корзину')
+    }
   };
 
   const onCardDelete = id => {

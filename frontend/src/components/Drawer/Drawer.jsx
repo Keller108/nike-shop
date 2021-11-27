@@ -19,9 +19,10 @@ function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
                                     {
                                         items.map((card, index) => 
                                             <CardItem
-                                                itemTitle={card.cardName}
-                                                itemPrice={card.cardPrice}
-                                                itemImage={card.imgPath}
+                                                {...card}
+                                                // itemTitle={card.cardName}
+                                                // itemPrice={card.cardPrice}
+                                                // itemImage={card.imgPath}
                                                 key={index}
                                                 onDelete={() => onCardDelete(card.id)}
                                             />
