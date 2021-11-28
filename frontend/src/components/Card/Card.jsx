@@ -10,8 +10,9 @@ function Card({
     onCardDelete,
     onAddFavourite,
     isFavourited,
+    added = false
 }) {
-    const [isAdded, setIsAdded] = React.useState(false);
+    const [isAdded, setIsAdded] = React.useState(added);
     const [isFavourite, setIsFavourite] = React.useState(false)
 
     const handleAddCardToDrawer = () => {

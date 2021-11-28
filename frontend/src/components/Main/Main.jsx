@@ -6,29 +6,13 @@ import searchClear from '../../images/btn-remove.svg';
 
 function Main ({
         onPlus,
+        cartItems,
         setItems,
         items,
         onCardDelete,
         onAddToFavourite,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
-
-    React.useEffect(() => {
-        // fetch('https://61822cb784c2020017d89ce5.mockapi.io/items')
-        //     .then(res => {
-        //         return res.json();
-        //         })
-        //     .then(json => {
-        //         setItems(json);
-        //     })
-        //     .catch(err => console.log(err));
-
-        axios.get('https://61822cb784c2020017d89ce5.mockapi.io/items')
-            .then((res) => {
-                setItems(res.data)
-            });
-
-    }, [setItems]);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
@@ -69,6 +53,7 @@ function Main ({
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
+                        added={cartItems.some(item => Number(item.id) === Number(card.id))}
                     />
                 )}
             </ul>
