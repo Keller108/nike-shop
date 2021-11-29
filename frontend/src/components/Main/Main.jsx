@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
