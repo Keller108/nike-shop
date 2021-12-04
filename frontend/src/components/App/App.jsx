@@ -62,10 +62,10 @@ function App() {
       setCartItems(cartResponse.data);
       setFavourites(favouritesResponse.data);
       setItems(itemsResponse.data);
+      setIsLoading(!isLoading);
     }
 
     fetchData();
-    setIsLoading(!isLoading);
   },[]);
 
   return (

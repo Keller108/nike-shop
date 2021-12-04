@@ -1,6 +1,7 @@
 import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
+import ContentLoader from "react-content-loader";
 import searchClear from '../../images/btn-remove.svg';
 
 function Main ({
@@ -44,9 +45,22 @@ function Main ({
                     placeholder="Поиск..."
                 />
             </div>    
-            <ul className="cards">{items
-                .filter((item) => item.name.toLowerCase().includes(searchValue))
-                .map((card, index) => 
+            <ul className="cards">{ isLoading ? 
+                <ContentLoader 
+                    speed={2}
+                    width={150}
+                    height={200}
+                    viewBox="0 0 155 260"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
+                    <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
+                    <rect x="0" y="132" rx="10" ry="10" width="150" height="15" /> 
+                    <rect x="114" y="165" rx="10" ry="10" width="32" height="32" /> 
+                    <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
+                </ContentLoader> : (
+                    items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((card, index) => 
                     <Card
                         {...card}
                         key={index}
@@ -56,7 +70,7 @@ function Main ({
                         added={cartItems.some(item => Number(item.id) === Number(card.id))}
                         isLoading={isLoading}
                     />
-                )}
+                ))}
             </ul>
         </main>
     )
