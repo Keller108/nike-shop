@@ -10,6 +10,7 @@ function Main ({
         items,
         onCardDelete,
         onAddToFavourite,
+        isLoading,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
 
@@ -53,6 +54,7 @@ function Main ({
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
                         added={cartItems.some(item => Number(item.id) === Number(card.id))}
+                        isLoading={isLoading}
                     />
                 )}
             </ul>

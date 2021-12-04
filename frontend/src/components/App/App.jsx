@@ -13,6 +13,7 @@ function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [favourites, setFavourites] = React.useState([]);
   const [items, setItems] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const handleDrawerOpen = () => {
     setIsCartOpen(!isCartOpen);
@@ -64,7 +65,7 @@ function App() {
     }
 
     fetchData();
-
+    setIsLoading(!isLoading);
   },[]);
 
   return (
@@ -88,6 +89,7 @@ function App() {
                 items={items}
                 onAddToFavourite={handleAddToFavourite}
                 cartItems={cartItems}
+                isLoading={isLoading}
               />
             }
             //  

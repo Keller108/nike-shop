@@ -12,7 +12,7 @@ function Card({
     onAddFavourite,
     isFavourited,
     added = false,
-    isLoading = false,
+    isLoading,
 }) {
     const [isAdded, setIsAdded] = React.useState(added);
     const [isFavourite, setIsFavourite] = React.useState(false)
@@ -32,23 +32,21 @@ function Card({
         setIsFavourite(!isFavourite);
     };
     
-    return (
-        {isLoading ? 
-            <ContentLoader 
-            speed={2}
-            width={150}
-            height={200}
-            viewBox="0 0 150 200"
-            backgroundColor="#f3f3f3"
-            foregroundColor="#ecebeb"
-            {...props}
-          >
-            <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
-            <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
-            <rect x="0" y="132" rx="10" ry="10" width="150" height="15" /> 
-            <rect x="114" y="165" rx="10" ry="10" width="32" height="32" /> 
-            <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
-          </ContentLoader> : (
+    return ( isLoading ? 
+                <ContentLoader 
+                    speed={2}
+                    width={150}
+                    height={200}
+                    viewBox="0 0 150 200"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
+                    <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
+                    <rect x="0" y="132" rx="10" ry="10" width="150" height="15" /> 
+                    <rect x="114" y="165" rx="10" ry="10" width="32" height="32" /> 
+                    <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
+                </ContentLoader> : (
                 <li className="card">
                     <button
                         onClick={handleLikeCard}
@@ -70,8 +68,7 @@ function Card({
                         <button onClick={!isAdded ? handleAddCardToDrawer : setCardState} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
                     </div>
                 </li>
-          )
-        }
+        )
     )
 }
 
