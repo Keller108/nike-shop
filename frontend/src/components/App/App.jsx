@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
+import AppContext from '../../utils/context';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
 import Drawer from '../Drawer/Drawer.jsx';
@@ -70,7 +71,8 @@ function App() {
   },[]);
 
   return (
-    <div className="app">
+    <AppContext.Provider value={{items, cartItems, favourites}}>
+      <div className="app">
       <div className="project-container">
         <Drawer
           isOpen={isCartOpen}
@@ -99,22 +101,22 @@ function App() {
           <Route exact path="/favourites" 
             element={
               <Favourites
-                items={favourites}
                 onAddToFavourite={handleAddToFavourite}
               />
             }
           />
-        <Route exact path="/orders" 
-            element={
-              <Orders
-                items={favourites}
-                onAddToFavourite={handleAddToFavourite}
-              />
-            }
-        />
-        </Routes>
+          <Route exact path="/orders" 
+              element={
+                <Orders
+                  items={favourites}
+                  onAddToFavourite={handleAddToFavourite}
+                />
+              }
+          />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </AppContext.Provider>  
   );
 }
 

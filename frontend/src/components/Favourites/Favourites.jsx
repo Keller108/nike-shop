@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Favourites.scss';
 import Card from '../Card/Card.jsx';
+import AppContext from '../../utils/context';
 
-function Favourites({ items, onAddToFavourite }) {
+function Favourites({ onAddToFavourite }) {
 
     const onFavouriteAdd = obj => {
         onAddToFavourite(obj);
-    }
+    };
+
+    const state = React.useContext(AppContext);
 
     return (
         <div>
@@ -25,7 +28,7 @@ function Favourites({ items, onAddToFavourite }) {
                     </h1>
                 </div>
                 <ul className="cards">{
-                        items.map((card, index) => 
+                        [].map((card, index) => 
                             <Card
                                 {...card}
                                 key={index}
