@@ -55,14 +55,15 @@ function App() {
   React.useEffect(() => {
 
     async function fetchData () {
+      setIsLoading(true);
       const cartResponse = await axios.get('https://61822cb784c2020017d89ce5.mockapi.io/cart');
       const favouritesResponse = await axios.get('https://61822cb784c2020017d89ce5.mockapi.io/favourites');
       const itemsResponse = await axios.get('https://61822cb784c2020017d89ce5.mockapi.io/items');
 
+      setIsLoading(false);
       setCartItems(cartResponse.data);
       setFavourites(favouritesResponse.data);
       setItems(itemsResponse.data);
-      setIsLoading(!isLoading);
     }
 
     fetchData();

@@ -1,8 +1,8 @@
 import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
-import ContentLoader from "react-content-loader";
 import searchClear from '../../images/btn-remove.svg';
+import ContentLoader from "react-content-loader";
 
 function Main ({
         onPlus,
@@ -21,15 +21,17 @@ function Main ({
 
     const clearInput = (event) => {
         setSearchValue(event.target.value = '');
-    }
+    };
 
     const onCardAdd = obj => {
         onPlus(obj);
-    }
+    };
 
     const onFavouriteAdd = obj => {
         onAddToFavourite(obj);
-    }
+    };
+
+    const filteredItems = items.filter((item) => item.name.toLowerCase().includes(searchValue));
 
     return (
         <main className="main">
@@ -45,22 +47,23 @@ function Main ({
                     placeholder="Поиск..."
                 />
             </div>    
-            <ul className="cards">{ isLoading ? 
+            <ul className="cards">{ isLoading ? ([...Array(8)].map(item => 
                 <ContentLoader 
-                    speed={2}
-                    width={150}
-                    height={200}
-                    viewBox="0 0 155 260"
-                    backgroundColor="#f3f3f3"
-                    foregroundColor="#ecebeb"
+                speed={2}
+                width={150}
+                height={200}
+                viewBox="0 0 155 260"
+                backgroundColor="#f3f3f3"
+                foregroundColor="#ecebeb"
                 >
                     <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
                     <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
                     <rect x="0" y="132" rx="10" ry="10" width="150" height="15" /> 
                     <rect x="114" y="165" rx="10" ry="10" width="32" height="32" /> 
                     <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
-                </ContentLoader> : (
-                    items.filter((item) => item.name.toLowerCase().includes(searchValue)).map((card, index) => 
+                </ContentLoader>
+            )) : (
+                    filteredItems.map((card, index) => 
                     <Card
                         {...card}
                         key={index}
