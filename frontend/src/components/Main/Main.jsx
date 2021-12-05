@@ -55,7 +55,7 @@ function Main ({
                     viewBox="0 0 155 260"
                     backgroundColor="#f3f3f3"
                     foregroundColor="#ecebeb"
-                    key={index}
+                    key={index }
                 >
                     <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
                     <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
