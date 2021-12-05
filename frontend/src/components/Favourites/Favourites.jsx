@@ -10,7 +10,7 @@ function Favourites({ onAddToFavourite }) {
         onAddToFavourite(obj);
     };
 
-    const state = React.useContext(AppContext);
+    const {favourites} = React.useContext(AppContext);
 
     return (
         <div>
@@ -28,7 +28,7 @@ function Favourites({ onAddToFavourite }) {
                     </h1>
                 </div>
                 <ul className="cards">{
-                        [].map((card, index) => 
+                        favourites.map((card, index) => 
                             <Card
                                 {...card}
                                 key={index}

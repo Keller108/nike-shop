@@ -1,6 +1,7 @@
 import React from "react";
 import './Main.scss';
 import Card from '../Card/Card.jsx';
+import AppContext from '../../utils/context';
 import searchClear from '../../images/btn-remove.svg';
 import ContentLoader from "react-content-loader";
 
@@ -14,6 +15,7 @@ function Main ({
         isLoading,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
+    const {isItemAdded} = React.useContext(AppContext);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
@@ -71,7 +73,7 @@ function Main ({
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
-                        added={cartItems.some(item => Number(item.id) === Number(card.id))}
+                        added={isItemAdded(!isLoading && card.id)}
                         isLoading={isLoading}
                     />
                 ))}

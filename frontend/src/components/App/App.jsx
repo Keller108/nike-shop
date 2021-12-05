@@ -52,6 +52,10 @@ function App() {
     }
   };
 
+  const isItemAdded = (id) => {
+    return cartItems.some(item => Number(item.id) === Number(id));
+  };
+
   // Вызов подгрузки карточек, избранных карточек, и карточек в корзине
   React.useEffect(() => {
 
@@ -71,7 +75,7 @@ function App() {
   },[]);
 
   return (
-    <AppContext.Provider value={{items, cartItems, favourites}}>
+    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded}}>
       <div className="app">
       <div className="project-container">
         <Drawer
