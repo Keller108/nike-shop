@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import ContentLoader from "react-content-loader";
+
 
 function Card({
     id,
@@ -21,8 +21,8 @@ function Card({
         setIsAdded(!isAdded);
     };
 
-    const setCardState = (evt) => {
-        onCardDelete(evt);  
+    const setCardState = () => {
+        onCardDelete({ id });  
         setIsAdded(!isAdded);
     };
 
@@ -50,7 +50,7 @@ function Card({
                         {price} руб.
                     </b>
                 </div>
-                <button onClick={!isAdded ? handleAddCardToDrawer : setCardState} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
+                <button onClick={isAdded ? setCardState : handleAddCardToDrawer} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
             </div>
         </li> )
 }

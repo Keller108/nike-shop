@@ -47,14 +47,15 @@ function Main ({
                     placeholder="Поиск..."
                 />
             </div>    
-            <ul className="cards">{ isLoading ? ([...Array(8)].map(item => 
+            <ul className="cards">{ isLoading ? ([...Array(8)].map((item, index) => 
                 <ContentLoader 
-                speed={2}
-                width={150}
-                height={200}
-                viewBox="0 0 155 260"
-                backgroundColor="#f3f3f3"
-                foregroundColor="#ecebeb"
+                    speed={2}
+                    width={150}
+                    height={200}
+                    viewBox="0 0 155 260"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                    key={index}
                 >
                     <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
                     <rect x="0" y="108" rx="10" ry="10" width="150" height="15" /> 
@@ -62,7 +63,7 @@ function Main ({
                     <rect x="114" y="165" rx="10" ry="10" width="32" height="32" /> 
                     <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
                 </ContentLoader>
-            )) : (
+            )): (
                     filteredItems.map((card, index) => 
                     <Card
                         {...card}
