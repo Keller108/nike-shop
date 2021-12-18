@@ -1,6 +1,6 @@
 import React from 'react';
-import './Card.scss';
 
+import './Card.scss';
 
 function Card({
     id,
@@ -11,19 +11,16 @@ function Card({
     onCardDelete,
     onAddFavourite,
     isFavourited,
-    added = false,
+    isAdded,
 }) {
-    const [isAdded, setIsAdded] = React.useState(added);
-    const [isFavourite, setIsFavourite] = React.useState(false)
+    const [isFavourite, setIsFavourite] = React.useState(false);
 
     const handleAddCardToDrawer = () => {
         onCardPlus({ name, price, img, id});
-        setIsAdded(!isAdded);
     };
 
     const setCardState = () => {
         onCardDelete({ id });  
-        setIsAdded(!isAdded);
     };
 
     const handleLikeCard = () => {
@@ -53,6 +50,6 @@ function Card({
                 <button onClick={isAdded ? setCardState : handleAddCardToDrawer} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
             </div>
         </li> )
-}
+};
 
-export default Card
+export default Card;

@@ -15,6 +15,7 @@ function Main ({
         isLoading,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
+    
     const {isItemAdded} = React.useContext(AppContext);
 
     const onChangeSearchInput = (event) => {
@@ -27,6 +28,7 @@ function Main ({
 
     const onCardAdd = obj => {
         onPlus(obj);
+        isItemAdded(obj.id);
     };
 
     const onFavouriteAdd = obj => {
@@ -73,8 +75,8 @@ function Main ({
                         onCardPlus={onCardAdd}
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
-                        added={isItemAdded(!isLoading && card.id)}
                         isLoading={isLoading}
+                        isAdded={isItemAdded}
                     />
                 ))}
             </ul>
