@@ -4,11 +4,13 @@ import './Favourites.scss';
 import Card from '../Card/Card.jsx';
 import AppContext from '../../utils/context';
 
-function Favourites({ onAddToFavourite }) {
+function Favourites({ 
+    onAddToFavourite,
+    onCardDelete,
+    onDislikeCard,
+    onPlus,
 
-    const onFavouriteAdd = obj => {
-        onAddToFavourite(obj);
-    };
+}) {
 
     const {favourites} = React.useContext(AppContext);
 
@@ -32,10 +34,10 @@ function Favourites({ onAddToFavourite }) {
                             <Card
                                 {...card}
                                 key={index}
-                                isFavourited={true}
-                                // onCardPlus={onCardAdd}
-                                // onCardDelete={onCardDelete}
-                                onAddFavourite={onFavouriteAdd}
+                                onCardPlus={onPlus}
+                                onCardDelete={onCardDelete}
+                                onDislikeCard={onDislikeCard}
+                                onAddToFavourite={onAddToFavourite}
                             />
                         )}
                     </ul>

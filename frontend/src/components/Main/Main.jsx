@@ -7,12 +7,11 @@ import ContentLoader from "react-content-loader";
 
 function Main ({
         onPlus,
-        // cartItems,
-        // setItems,
         items,
         onCardDelete,
         onAddToFavourite,
         isLoading,
+        onDislikeCard,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
 
@@ -26,10 +25,6 @@ function Main ({
 
     const onCardAdd = obj => {
         onPlus(obj);
-    };
-
-    const onFavouriteAdd = obj => {
-        onAddToFavourite(obj);
     };
 
     const filteredItems = items.filter((item) => item.name.toLowerCase().includes(searchValue));
@@ -65,13 +60,14 @@ function Main ({
                     <rect x="0" y="171" rx="10" ry="10" width="60" height="24" />
                 </ContentLoader>
             )): (
-                    filteredItems.map((card, index) => 
+                    filteredItems.map((card) => 
                     <Card
                         {...card}
-                        key={index}
-                        onCardPlus={onCardAdd}
+                        key={card.object_id}
+                        onCardPlus={onPlus}
                         onCardDelete={onCardDelete}
-                        onAddFavourite={onFavouriteAdd}
+                        onDislikeCard={onDislikeCard}
+                        onAddToFavourite={onAddToFavourite}
                         isLoading={isLoading}
                     />
                 ))}

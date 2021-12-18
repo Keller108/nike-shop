@@ -23,7 +23,8 @@ function App() {
   const handleAddToCart = async (obj) => {
     try {
       if (cartItems.find(cardObj => Number(cardObj.id) === Number(obj.id))) {
-        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.obj)))
+        axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj}`);
+        setCartItems(prev => prev.filter(item => item.id !== obj.id))
       } else { 
         const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
         setCartItems(prev => [...prev, data]);
@@ -33,15 +34,20 @@ function App() {
     }
   };
 
-  const onCardDelete = id => {
-    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${id}`);
-    setCartItems(prev => (prev).filter(item => item.id !== id));
+  const onCardDelete = obj => {
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
+    setCartItems(prev => (prev).filter(item => item.id !== obj.id));
+  };
+
+  const onDislikeCard = obj => {
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
+    setFavourites(prev => (prev).filter(item => item.id !== obj.id));
   };
 
   const handleAddToFavourite = async (obj) => {
     try {
       if (favourites.find(favObj => favObj.id === obj.id)) {
-        axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
+        axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj}`);
         setFavourites(prev => (prev).filter(item => item.id !== obj.id));
       } else {
         const {data} = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/favourites', obj);
@@ -53,7 +59,11 @@ function App() {
   };
 
   const isItemAdded = (id) => {
-    return cartItems.some(item => Number(item.id) === Number(id));
+    return cartItems.some(item => item.id === id);
+   };
+
+  const isItemLiked = (id) => {
+    return favourites.some(item => item.id === id); 
   };
 
   // Вызов подгрузки карточек, избранных карточек, и карточек в корзине
@@ -75,7 +85,7 @@ function App() {
   },[]);
 
   return (
-    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded}}>
+    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded, isItemLiked}}>
       <div className="app">
       <div className="project-container">
         <Drawer
@@ -92,6 +102,7 @@ function App() {
               <Main
                 onPlus={handleAddToCart}
                 onCardDelete={onCardDelete}
+                onDislikeCard={onDislikeCard}
                 setItems={setItems}
                 items={items}
                 onAddToFavourite={handleAddToFavourite}
@@ -102,10 +113,14 @@ function App() {
             //  
           >
           </Route>
-          <Route exact path="/favourites" 
+          <Route 
+            exact path="/favourites" 
             element={
               <Favourites
-                onAddToFavourite={handleAddToFavourite}
+              onPlus={handleAddToCart}
+              onCardDelete={onCardDelete}
+              onDislikeCard={onDislikeCard}
+              onAddToFavourite={handleAddToFavourite}
               />
             }
           />
