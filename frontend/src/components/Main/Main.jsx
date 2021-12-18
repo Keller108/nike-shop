@@ -1,22 +1,20 @@
 import React from "react";
+
 import './Main.scss';
 import Card from '../Card/Card.jsx';
-import AppContext from '../../utils/context';
 import searchClear from '../../images/btn-remove.svg';
 import ContentLoader from "react-content-loader";
 
 function Main ({
         onPlus,
-        cartItems,
-        setItems,
+        // cartItems,
+        // setItems,
         items,
         onCardDelete,
         onAddToFavourite,
         isLoading,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
-    
-    const {isItemAdded} = React.useContext(AppContext);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
@@ -28,7 +26,6 @@ function Main ({
 
     const onCardAdd = obj => {
         onPlus(obj);
-        isItemAdded(obj.id);
     };
 
     const onFavouriteAdd = obj => {
@@ -76,7 +73,6 @@ function Main ({
                         onCardDelete={onCardDelete}
                         onAddFavourite={onFavouriteAdd}
                         isLoading={isLoading}
-                        isAdded={isItemAdded}
                     />
                 ))}
             </ul>

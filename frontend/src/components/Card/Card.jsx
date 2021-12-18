@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Card.scss';
+import AppContext from '../../utils/context';
 
 function Card({
     id,
@@ -11,13 +12,16 @@ function Card({
     onCardDelete,
     onAddFavourite,
     isFavourited,
-    isAdded,
 }) {
     const [isFavourite, setIsFavourite] = React.useState(false);
+    const {isItemAdded} = React.useContext(AppContext);
 
     const handleAddCardToDrawer = () => {
         onCardPlus({ name, price, img, id});
+        isItemAdded(id);
     };
+
+    console.log(name, isItemAdded(id))
 
     const setCardState = () => {
         onCardDelete({ id });  
@@ -47,7 +51,7 @@ function Card({
                         {price} руб.
                     </b>
                 </div>
-                <button onClick={isAdded ? setCardState : handleAddCardToDrawer} className={isAdded ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
+                <button onClick={false ? setCardState : handleAddCardToDrawer} className={false ? `card__btn-plus card__btn-plus_added` : `card__btn-plus`} type="button" aria-label="button add"/>
             </div>
         </li> )
 };
