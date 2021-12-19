@@ -63,7 +63,7 @@ function Main ({
                     filteredItems.map((card) => 
                     <Card
                         {...card}
-                        key={card.object_id}
+                        key={card.id}
                         onCardPlus={onPlus}
                         onCardDelete={onCardDelete}
                         onDislikeCard={onDislikeCard}

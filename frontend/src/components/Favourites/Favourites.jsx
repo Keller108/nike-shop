@@ -30,10 +30,10 @@ function Favourites({
                     </h1>
                 </div>
                 <ul className="cards">{
-                        favourites.map((card, index) => 
+                        favourites.map((card) => 
                             <Card
                                 {...card}
-                                key={index}
+                                key={card.id}
                                 onCardPlus={onPlus}
                                 onCardDelete={onCardDelete}
                                 onDislikeCard={onDislikeCard}
