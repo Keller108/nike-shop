@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './EmptyOrders.scss';
 import smilePath from '../../../images/smile-down.svg';
+import './EmptyOrders.scss';
 
 function EmptyOrders() {
     return (

@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 import './Favourites.scss';
 import Card from '../Card/Card.jsx';
 import AppContext from '../../utils/context';
+import EmptyFavourites from '../Favourites/EmptyFavourites/EmptyFavourites';
 
 function Favourites({ 
     onAddToFavourite,
@@ -29,7 +31,9 @@ function Favourites({
                         Мои закладки
                     </h1>
                 </div>
-                <ul className="cards">{
+                {
+                    favourites == 0 ? <EmptyFavourites /> :
+                    <ul className="cards">{
                         favourites.map((card) => 
                             <Card
                                 {...card}
@@ -41,6 +45,7 @@ function Favourites({
                             />
                         )}
                     </ul>
+                }
             </main>
         </div>
     )
