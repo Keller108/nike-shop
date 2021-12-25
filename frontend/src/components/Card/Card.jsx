@@ -8,6 +8,7 @@ function Card({
     img,
     name,
     price,
+    object_id,
     onCardPlus,
     onCardDelete,
     onAddToFavourite,
@@ -17,7 +18,7 @@ function Card({
     const {isItemAdded, isItemLiked} = React.useContext(AppContext);
 
     const handleAddCardToDrawer = () => {
-        onCardPlus({ name, price, img, id});
+        onCardPlus({ name, price, img, id, object_id});
     };
 
     const handleDeleteCardFromDrawer = () => {
@@ -25,7 +26,7 @@ function Card({
     };
 
     const handleLikeCard = () => {
-        onAddToFavourite({ name, price, img, id});
+        onAddToFavourite({ name, price, img, id, object_id});
     };
 
     const handleDislikeCard = () => {
