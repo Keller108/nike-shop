@@ -2,14 +2,23 @@ import React from 'react'
 import './Drawer.scss';
 import CardItem from '../CartItem/CartItem';
 import EmptyCart from '../EmptyCart/EmptyCart';
+import PlaceAnOrder from '../../features/PlaceAnOrder/PlaceAnOrder';
+import AppContext from '../../utils/context';
 
-function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
+function Drawer({ isOpen, onCartClose, onCardDelete }) {
+
+    const [isCompleted, setIsCompleted] = React.useState(false);
+    const { cartItems } = React.useContext(AppContext);
+
+    const handleComplete = () => {
+        setIsCompleted(true);
+    };
 
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
                 <button onClick={onCartClose} className="drawer__close-btn" aria-label="close cart" type="button"/>
-                    { items.length > 0 ? (
+                    { cartItems ? (
                         <>
                             <div className="drawer__top-content-wrapper">
                                 <h2 className="drawer__title">
@@ -17,12 +26,9 @@ function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
                                 </h2>
                                 <ul className="drawer__list">
                                     {
-                                        items.map((card, index) => 
+                                        cartItems.map((card, index) => 
                                             <CardItem
                                                 {...card}
-                                                // itemTitle={card.cardName}
-                                                // itemPrice={card.cardPrice}
-                                                // itemImage={card.imgPath}
                                                 key={index}
                                                 onDelete={() => onCardDelete(card.id)}
                                             />
@@ -52,11 +58,24 @@ function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
                                 <button 
                                     type="button"
                                     className="drawer__pay-btn"
+                                    onClick={handleComplete}
                                 >
                                     Оформить заказ    
                                 </button>    
                             </div>
                         </>
+                        ) : isCompleted ? (
+                            <>
+                                <div className="drawer__top-content-wrapper">
+                                    <h2 className="drawer__title">
+                                        Корзина
+                                    </h2>
+                                    <PlaceAnOrder 
+                                        onCartClose={onCartClose}
+                                        isCompleted={isCompleted}
+                                    />
+                                </div>
+                            </>
                         ) : (
                         <>
                             <div className="drawer__top-content-wrapper">
