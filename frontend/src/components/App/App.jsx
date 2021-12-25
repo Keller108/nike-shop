@@ -38,10 +38,6 @@ function App() {
         const { data } = await axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${id}`);
         setCartItems(prev => (prev).filter(item => item.id !== obj.id));
         handleSubtractTotalPrice(data);
-        console.log(data);
-        // const { data } = await axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj}`);
-        // setCartItems(prev => prev.filter(item => item.id !== obj.id));
-        // handleSubtractTotalPrice(obj);
       } else { 
         const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
         setCartItems(prev => [...prev, data]);
@@ -128,7 +124,6 @@ function App() {
                 onCardDelete={handleAddToCart}
                 onDislikeCard={onDislikeCard}
                 setItems={setItems}
-                items={items}
                 onAddToFavourite={handleAddToFavourite}
                 cartItems={cartItems}
                 isLoading={isLoading}
@@ -141,18 +136,22 @@ function App() {
             exact path="/favourites" 
             element={
               <Favourites
-              onPlus={handleAddToCart}
-              onCardDelete={onCardDelete}
-              onDislikeCard={onDislikeCard}
-              onAddToFavourite={handleAddToFavourite}
+                onPlus={handleAddToCart}
+                onCardDelete={onCardDelete}
+                onDislikeCard={onDislikeCard}
+                onAddToFavourite={handleAddToFavourite}
               />
             }
           />
           <Route exact path="/orders" 
               element={
                 <Orders
-                  items={favourites}
+                  onPlus={handleAddToCart}
+                  onCardDelete={handleAddToCart}
+                  onDislikeCard={onDislikeCard}
+                  setItems={setItems}
                   onAddToFavourite={handleAddToFavourite}
+                  cartItems={cartItems}
                 />
               }
           />

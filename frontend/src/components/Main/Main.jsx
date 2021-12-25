@@ -4,16 +4,17 @@ import './Main.scss';
 import Card from '../Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 import ContentLoader from "react-content-loader";
+import AppContext from "../../utils/context";
 
 function Main ({
         onPlus,
-        items,
         onCardDelete,
         onAddToFavourite,
         isLoading,
         onDislikeCard,
     }) {
     const [searchValue, setSearchValue] = React.useState('');
+    const { items } = React.useContext(AppContext);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
