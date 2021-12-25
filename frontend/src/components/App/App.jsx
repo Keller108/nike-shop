@@ -14,29 +14,53 @@ function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [favourites, setFavourites] = React.useState([]);
   const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [totalPrice, setTotalPrice] = React.useState(0);
 
   const handleDrawerOpen = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  const handlePlusTotalPrice = (obj) => {
+    let price = obj.price;
+    setTotalPrice(prev => Number(prev) + Number(price));
+  };
+
+  const handleSubtractTotalPrice = (obj) => {
+    let price = obj.price;
+    setTotalPrice(prev => Number(prev) - Number(price));
+  }
+
   const handleAddToCart = async (obj) => {
     try {
-      if (cartItems.find(cardObj => Number(cardObj.id) === Number(obj.id))) {
-        axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj}`);
-        setCartItems(prev => prev.filter(item => item.id !== obj.id))
+      if (cartItems.find(cardObj => cardObj.id === obj.id)) {
+        let id = obj.id;
+        const { data } = await axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${id}`);
+        setCartItems(prev => (prev).filter(item => item.id !== obj.id));
+        handleSubtractTotalPrice(data);
+        console.log(data);
+        // const { data } = await axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj}`);
+        // setCartItems(prev => prev.filter(item => item.id !== obj.id));
+        // handleSubtractTotalPrice(obj);
       } else { 
         const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/cart', obj);
         setCartItems(prev => [...prev, data]);
+        handlePlusTotalPrice(data);
       }
     } catch (error) {
       alert('Не получилось добавить карточку в корзину')
     }
   };
 
-  const onCardDelete = obj => {
-    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
+  React.useEffect(() => {
+    console.log(totalPrice)
+  },[totalPrice]);
+
+  const onCardDelete = async obj => {
+    // handleSubtractTotalPrice(obj);
+    await axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
     setCartItems(prev => (prev).filter(item => item.id !== obj.id));
+    console.log(obj)
   };
 
   const onDislikeCard = obj => {
@@ -85,14 +109,14 @@ function App() {
   },[]);
 
   return (
-    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded, isItemLiked}}>
+    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded, isItemLiked, totalPrice}}>
       <div className="app">
       <div className="project-container">
         <Drawer
           isOpen={isCartOpen}
           onCartClose={handleDrawerOpen}
           items={cartItems}
-          onCardDelete={onCardDelete}
+          onCardDelete={handleAddToCart}
         />
         <Header onCartOpen={handleDrawerOpen} />
         <Routes>
@@ -101,7 +125,7 @@ function App() {
             element={
               <Main
                 onPlus={handleAddToCart}
-                onCardDelete={onCardDelete}
+                onCardDelete={handleAddToCart}
                 onDislikeCard={onDislikeCard}
                 setItems={setItems}
                 items={items}
