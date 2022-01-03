@@ -1,7 +1,7 @@
 import React from "react";
 
 import './Main.scss';
-import Card from '../Card/Card.jsx';
+import Card from '../../shared/Card/Card.jsx';
 import searchClear from '../../images/btn-remove.svg';
 import ContentLoader from "react-content-loader";
 

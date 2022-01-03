@@ -3,11 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
 import AppContext from '../../utils/context';
-import Header from '../Header/Header.jsx';
-import Main from '../Main/Main.jsx';
-import Drawer from '../Drawer/Drawer.jsx';
-import Favourites from '../Favourites/Favourites.jsx';
-import Orders from '../Orders/Orders.jsx';
+import Header from '../../shared/Header/Header.jsx';
+import Main from '../../pages/Main/Main.jsx';
+import Drawer from '../../features/Drawer/Drawer.jsx';
+import Favourites from '../../pages/Favourites/Favourites';
+import Orders from '../../pages/Orders/Orders.jsx';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = React.useState(false);

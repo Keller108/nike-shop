@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Card from '../Card/Card.jsx';
+import Card from '../../shared/Card/Card';
 
 function Orders({items, onFavouriteAdd}) {
     return (

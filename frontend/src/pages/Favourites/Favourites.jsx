@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Favourites.scss';
-import Card from '../Card/Card.jsx';
+import Card from '../../shared/Card/Card';
 import AppContext from '../../utils/context';
 
 function Favourites({ 

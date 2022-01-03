@@ -1,7 +1,7 @@
 import React from 'react'
 import './Drawer.scss';
-import CardItem from '../CartItem/CartItem';
-import EmptyCart from '../EmptyCart/EmptyCart';
+import CardItem from '../../shared/CartItem/CartItem';
+import EmptyCart from '../../components/EmptyCart/EmptyCart';
 
 function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
 
