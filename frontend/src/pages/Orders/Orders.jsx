@@ -1,8 +1,18 @@
 import React from 'react';
+
+import AppContext from '../../utils/context';
 import {Link} from 'react-router-dom';
 import Card from '../../shared/Card/Card';
+import EmptyOrders from '../../components/EmptyOrders/EmptyOrders';
 
-function Orders({items, onFavouriteAdd}) {
+function Orders({
+    onCardAdd,
+    onCardDelete,
+    onAddToFavourite,
+    onDislikeCard,
+    isLoading,
+}) {
+    const { cartItems } = React.useContext(AppContext);
     return (
         <div>
             <main className="main">
@@ -18,18 +28,22 @@ function Orders({items, onFavouriteAdd}) {
                         Мои покупки
                     </h1>
                 </div>
-                <ul className="cards">{
-                        items.map((card, index) => 
+                {
+                    cartItems.length === 0 ? <EmptyOrders /> :
+                    <ul className="cards">{
+                        cartItems.map((card) => 
                             <Card
                                 {...card}
-                                key={index}
-                                isFavourited={false}
-                                // onCardPlus={onCardAdd}
-                                // onCardDelete={onCardDelete}
-                                onAddFavourite={onFavouriteAdd}
+                                key={card.id}
+                                onCardAdd={onCardAdd}
+                                onCardDelete={onCardDelete}
+                                onDislikeCard={onDislikeCard}
+                                onAddToFavourite={onAddToFavourite}
+                                isLoading={isLoading}
                             />
                         )}
                     </ul>
+                }
             </main>
         </div>
     )
