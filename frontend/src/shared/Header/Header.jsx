@@ -24,7 +24,7 @@ function Header ({onCartOpen}) {
           </Link>
           <ul className="header__btn-list">
                 <li>
-                    <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">{totalCount}&nbsp;руб.</button>
+                    <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">{!totalCount ? 0 : totalCount}&nbsp;руб.</button>
                 </li>
                 <Link to="/favourites">
                   <li>

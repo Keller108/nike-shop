@@ -1,7 +1,7 @@
 import React from 'react';
 
-import smileSadPath from '../../../images/smile-sad.svg';
-import '../../Orders/EmptyOrders/EmptyOrders.scss';
+import smileSadPath from '../../images/smile-sad.svg';
+import '../EmptyOrders/EmptyOrders.scss';
 
 function EmptyFavourites() {
     return (

@@ -136,7 +136,6 @@ function App() {
           <Route exact path="/orders" 
               element={
                 <Orders
-                  items={favourites}
                   onAddToFavourite={handleAddToFavourite}
                 />
               }

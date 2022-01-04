@@ -1,17 +1,19 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
-import './Favourites.scss';
-import Card from '../../shared/Card/Card';
 import AppContext from '../../utils/context';
+import EmptyFavourites from '../../components/EmptyFavourites/EmptyFavourites';
+import Card from '../../shared/Card/Card';
+import './Favourites.scss';
 
 function Favourites({ 
-    onAddToFavourite,
+    onCardAdd,
     onCardDelete,
+    onAddToFavourite,
     onDislikeCard,
-    onPlus,
+    isLoading,
 
 }) {
-
     const {favourites} = React.useContext(AppContext);
 
     return (
@@ -29,18 +31,22 @@ function Favourites({
                         Мои закладки
                     </h1>
                 </div>
-                <ul className="cards">{
+                {
+                    favourites.length === 0 ? <EmptyFavourites /> :
+                    <ul className="cards">{
                         favourites.map((card) => 
                             <Card
                                 {...card}
                                 key={card.id}
-                                onCardPlus={onPlus}
+                                onCardAdd={onCardAdd}
                                 onCardDelete={onCardDelete}
                                 onDislikeCard={onDislikeCard}
                                 onAddToFavourite={onAddToFavourite}
+                                isLoading={isLoading}
                             />
                         )}
                     </ul>
+                }      
             </main>
         </div>
     )
