@@ -1,10 +1,14 @@
 import React from 'react'
 import './Drawer.scss';
-import CardItem from '../../shared/CartItem/CartItem';
+import CartItem from '../../shared/CartItem/CartItem';
 import EmptyCart from '../../components/EmptyCart/EmptyCart';
 
-function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
-
+function Drawer({
+    isOpen,
+    onCartClose,
+    items,
+    onCardDelete,
+}) {
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
@@ -18,13 +22,13 @@ function Drawer({ isOpen, onCartClose, items, onCardDelete }) {
                                 <ul className="drawer__list">
                                     {
                                         items.map((card, index) => 
-                                            <CardItem
+                                            <CartItem
                                                 {...card}
                                                 // itemTitle={card.cardName}
                                                 // itemPrice={card.cardPrice}
                                                 // itemImage={card.imgPath}
                                                 key={index}
-                                                onDelete={() => onCardDelete(card.id)}
+                                                onDelete={() => onCardDelete(card)}
                                             />
                                         )
                                     }        

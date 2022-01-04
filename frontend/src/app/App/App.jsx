@@ -41,7 +41,7 @@ function App() {
   };
 
   /*
-    * Хелпер добавления и удаления карточек из favourites 
+    Хелпер добавления и удаления карточек из favourites 
   */
   const handleAddToFavourite = async (obj) => {
     try {
@@ -57,10 +57,10 @@ function App() {
     }
   };
 
-  // const onCardDelete = obj => {
-  //   axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
-  //   setCartItems(prev => (prev).filter(item => item.id !== obj.id));
-  // };
+  const onCardDelete = obj => {
+    axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
+    setCartItems(prev => (prev).filter(item => item.id !== obj.id));
+  };
 
   const onDislikeCard = obj => {
     axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/favourites/${obj.id}`);
@@ -101,7 +101,7 @@ function App() {
           isOpen={isCartOpen}
           onCartClose={handleDrawerOpen}
           items={cartItems}
-          onCardDelete={cardActionHelper}
+          onCardDelete={onCardDelete}
         />
         <Header onCartOpen={handleDrawerOpen} />
         <Routes>
