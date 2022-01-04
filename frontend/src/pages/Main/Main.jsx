@@ -6,7 +6,7 @@ import searchClear from '../../images/btn-remove.svg';
 import ContentLoader from "react-content-loader";
 
 function Main ({
-        onPlus,
+        onCardAdd,
         items,
         onCardDelete,
         onAddToFavourite,
@@ -23,9 +23,9 @@ function Main ({
         setSearchValue(event.target.value = '');
     };
 
-    const onCardAdd = obj => {
-        onPlus(obj);
-    };
+    // const onHandleCardAdd = obj => {
+    //     onCardAdd(obj);
+    // };
 
     const filteredItems = items.filter((item) => item.name.toLowerCase().includes(searchValue));
 
@@ -64,7 +64,7 @@ function Main ({
                     <Card
                         {...card}
                         key={card.id}
-                        onCardPlus={onPlus}
+                        onCardAdd={onCardAdd}
                         onCardDelete={onCardDelete}
                         onDislikeCard={onDislikeCard}
                         onAddToFavourite={onAddToFavourite}

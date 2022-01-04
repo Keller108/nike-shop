@@ -1,9 +1,12 @@
 import React from "react";
+
+import AppContext from "../../utils/context";
 import {Link} from 'react-router-dom';
 import './Header.scss';
 import logoPath from '../../images/nike-logo.png';
 
 function Header ({onCartOpen}) {
+    const {totalCount} = React.useContext(AppContext);
     return (
         <header className="header">
           <Link to="/">
@@ -21,7 +24,7 @@ function Header ({onCartOpen}) {
           </Link>
           <ul className="header__btn-list">
                 <li>
-                    <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">1205&nbsp;руб.</button>
+                    <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">{totalCount}&nbsp;руб.</button>
                 </li>
                 <Link to="/favourites">
                   <li>
