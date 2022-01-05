@@ -60,6 +60,7 @@ function App() {
   const onCardDelete = obj => {
     axios.delete(`https://61822cb784c2020017d89ce5.mockapi.io/cart/${obj.id}`);
     setCartItems(prev => (prev).filter(item => item.id !== obj.id));
+    setTotalCount(prev => prev - Number(obj.price));
   };
 
   const onDislikeCard = obj => {

@@ -1,7 +1,9 @@
-import React from 'react'
-import './Drawer.scss';
+import React from 'react';
+
+import AppContext from '../../utils/context';
 import CartItem from '../../shared/CartItem/CartItem';
 import EmptyCart from '../../components/EmptyCart/EmptyCart';
+import './Drawer.scss';
 
 function Drawer({
     isOpen,
@@ -9,6 +11,8 @@ function Drawer({
     items,
     onCardDelete,
 }) {
+    const { totalCount } = React.useContext(AppContext);
+
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
@@ -41,7 +45,7 @@ function Drawer({
                                     </p>
                                     <div className="drawer__dots"></div>
                                     <p className="drawer__amout-price">
-                                        21 432 руб.
+                                        {totalCount} руб.
                                     </p>
                                 </div>
                                 <div className="drawer__amount-content">
@@ -50,7 +54,7 @@ function Drawer({
                                     </p>
                                     <div className="drawer__dots"></div>
                                     <p className="drawer__amout-price">
-                                        1074 руб.
+                                        {totalCount / 100 * 5} руб.
                                     </p>
                                 </div>
                                 <button 
