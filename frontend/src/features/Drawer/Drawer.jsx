@@ -3,6 +3,7 @@ import React from 'react';
 import AppContext from '../../utils/context';
 import CartItem from '../../shared/CartItem/CartItem';
 import EmptyCart from '../../components/EmptyCart/EmptyCart';
+import PlaceAnOrder from '../PlaceAnOrder/PlaceAnOrder';
 import './Drawer.scss';
 
 function Drawer({
@@ -12,12 +13,17 @@ function Drawer({
     onCardDelete,
 }) {
     const { totalCount } = React.useContext(AppContext);
+    const [completed, setCompleted] = React.useState(false);
+
+    function handlePlaceAnOrder() {
+        setCompleted(!completed);
+    }
 
     return (
         <div className={isOpen ? `drawer-overlay drawer-overlay_visible` : `drawer-overlay`}>
             <div className="drawer">
                 <button onClick={onCartClose} className="drawer__close-btn" aria-label="close cart" type="button"/>
-                    { items.length > 0 ? (
+                    { items.length > 0 && !completed ? (
                         <>
                             <div className="drawer__top-content-wrapper">
                                 <h2 className="drawer__title">
@@ -25,13 +31,10 @@ function Drawer({
                                 </h2>
                                 <ul className="drawer__list">
                                     {
-                                        items.map((card, index) => 
+                                        items.map((card) => 
                                             <CartItem
                                                 {...card}
-                                                // itemTitle={card.cardName}
-                                                // itemPrice={card.cardPrice}
-                                                // itemImage={card.imgPath}
-                                                key={index}
+                                                key={card.id}
                                                 onDelete={() => onCardDelete(card)}
                                             />
                                         )
@@ -58,6 +61,7 @@ function Drawer({
                                     </p>
                                 </div>
                                 <button 
+                                    onClick={handlePlaceAnOrder}
                                     type="button"
                                     className="drawer__pay-btn"
                                 >
@@ -65,7 +69,15 @@ function Drawer({
                                 </button>    
                             </div>
                         </>
-                        ) : (
+                        ) : completed ? 
+                        <>
+                            <div className="drawer__top-content-wrapper">
+                                <h2 className="drawer__title">
+                                    Корзина
+                                </h2>
+                                <PlaceAnOrder onCartClose={onCartClose} setCompleted={setCompleted} />
+                            </div>
+                        </> : (
                         <>
                             <div className="drawer__top-content-wrapper">
                                 <h2 className="drawer__title">
