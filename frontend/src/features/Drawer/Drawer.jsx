@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import AppContext from '../../utils/context';
 import CartItem from '../../shared/CartItem/CartItem';
@@ -12,11 +13,33 @@ function Drawer({
     items,
     onCardDelete,
 }) {
-    const { totalCount } = React.useContext(AppContext);
+    const { totalCount, setTotalCount, cartItems, setCartItems, } = React.useContext(AppContext);
     const [completed, setCompleted] = React.useState(false);
+    const [orderID, setOrderID] = React.useState(null);
 
-    function handlePlaceAnOrder() {
-        setCompleted(!completed);
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const handlePlaceAnOrder = async () => {
+        try {
+            const { data } = await axios.post('https://61822cb784c2020017d89ce5.mockapi.io/orders/', {
+                items: cartItems,
+            });
+
+            setOrderID(data.id);
+            setCompleted(!completed);
+            setCartItems([]);
+            setTotalCount(0);
+
+            for (let i = 0; i < cartItems.length; i++) {
+                const item = cartItems[i];
+                await axios.delete('/cart/', item.id);
+                await delay(1000);
+            }
+
+        } catch (error) {
+            alert('Ошибка при создании заказа :(')
+        }
+        
     }
 
     return (
@@ -75,7 +98,7 @@ function Drawer({
                                 <h2 className="drawer__title">
                                     Корзина
                                 </h2>
-                                <PlaceAnOrder onCartClose={onCartClose} setCompleted={setCompleted} />
+                                <PlaceAnOrder orderID={orderID} onCartClose={onCartClose} setCompleted={setCompleted} />
                             </div>
                         </> : (
                         <>

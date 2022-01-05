@@ -3,7 +3,7 @@ import React from 'react';
 import CompleteImg from '../../images/complete-order.jpg';
 import './PlaceAnOrder.scss';
 
-function PlaceAnOrder({ onCartClose, setCompleted }) {
+function PlaceAnOrder({ orderID, onCartClose, setCompleted }) {
     return (
         <div className="drawer__complete-order">
             <img width="120" height="120" src={CompleteImg} alt="Завершенный заказ"/>
@@ -11,7 +11,7 @@ function PlaceAnOrder({ onCartClose, setCompleted }) {
                 Заказ оформлен!
             </h2>
             <p>
-                Ваш заказ {Math.floor(Math.random() * 100 )} скоро будет передан курьерской доставке
+                Ваш заказ #{orderID} скоро будет передан курьерской доставке
             </p>
             <button 
                 onClick={() => { 

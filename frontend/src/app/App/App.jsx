@@ -95,7 +95,15 @@ function App() {
   },[]);
 
   return (
-    <AppContext.Provider value={{items, cartItems, favourites, isItemAdded, isItemLiked, totalCount}}>
+    <AppContext.Provider value={{items,
+      cartItems,
+      setCartItems,
+      favourites,
+      isItemAdded,
+      isItemLiked,
+      totalCount,
+      setTotalCount,
+    }}>
       <div className="app">
       <div className="project-container">
         <Drawer
