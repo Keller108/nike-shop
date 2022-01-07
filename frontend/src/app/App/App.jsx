@@ -14,6 +14,7 @@ function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [favourites, setFavourites] = React.useState([]);
   const [items, setItems] = React.useState([]);
+  const [orders, setOrders] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [totalCount, setTotalCount] = React.useState(0);
 
@@ -103,6 +104,8 @@ function App() {
       isItemLiked,
       totalCount,
       setTotalCount,
+      orders,
+      setOrders,
     }}>
       <div className="app">
       <div className="project-container">

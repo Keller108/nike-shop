@@ -12,7 +12,7 @@ function Orders({
     onDislikeCard,
     isLoading,
 }) {
-    const { cartItems } = React.useContext(AppContext);
+    const { cartItems, orders } = React.useContext(AppContext);
     return (
         <div>
             <main className="main">
@@ -29,9 +29,9 @@ function Orders({
                     </h1>
                 </div>
                 {
-                    cartItems.length === 0 ? <EmptyOrders /> :
+                    orders.length === 0 ? <EmptyOrders /> :
                     <ul className="cards">{
-                        cartItems.map((card) => 
+                        orders.map((card) => 
                             <Card
                                 {...card}
                                 key={card.id}

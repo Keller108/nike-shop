@@ -13,7 +13,13 @@ function Drawer({
     items,
     onCardDelete,
 }) {
-    const { totalCount, setTotalCount, cartItems, setCartItems, } = React.useContext(AppContext);
+    const { totalCount,
+        setTotalCount,
+        cartItems,
+        setCartItems,
+        setOrders,
+    } = React.useContext(AppContext);
+
     const [completed, setCompleted] = React.useState(false);
     const [orderID, setOrderID] = React.useState(null);
 
@@ -29,6 +35,8 @@ function Drawer({
             setCompleted(!completed);
             setCartItems([]);
             setTotalCount(0);
+            setOrders(data.items);
+            console.log(data.items);
 
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
