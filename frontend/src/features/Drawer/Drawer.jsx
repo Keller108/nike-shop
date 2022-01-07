@@ -32,7 +32,7 @@ function Drawer({
 
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
-                await axios.delete('https://61822cb784c2020017d89ce5.mockapi.io/cart/', item.id);
+                await axios.delete('https://61822cb784c2020017d89ce5.mockapi.io/cart/'+item.id);
                 await delay(1000);
             }
 
