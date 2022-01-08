@@ -5,15 +5,14 @@
 .main__btn-back {
     width: 28px;
     height: 28px;
-    background-color: #bebebe;
-    border: 1px solid #bebebe;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
     border-radius: 8px;
     outline: none;
     cursor: pointer;
-    background-image: url("../../images/arrow.svg");
-    background-size: 20px;
+    background-image: url("../../images/cross-icon.svg");
+    background-size: 10px;
     background-repeat: no-repeat;
-    background-position: center;
-    transform: rotate(180deg);
+    background-position: center center;
     margin-right: 25px;
 }

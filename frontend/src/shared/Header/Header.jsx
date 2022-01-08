@@ -26,17 +26,16 @@ function Header ({onCartOpen}) {
                 <li>
                     <button onClick={onCartOpen} className="header__cart-btn transparent-link" type="button">{!totalCount ? 0 : totalCount}&nbsp;руб.</button>
                 </li>
-                <Link to="/favourites">
-                  <li>
-                      <button className="header__favourite-btn" type="button"></button>
-                  </li>
-                </Link>
-                <Link to="/orders">
-                  <li>
-                      <button className="header__acc-btn" type="button"></button>
-                  </li>
-                </Link>
-                
+                <li>
+                  <Link to="/favourites">
+                        <button className="header__favourite-btn" type="button"></button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/orders">
+                        <button className="header__acc-btn" type="button"></button>
+                  </Link>
+                </li>
             </ul>
         </header>
     )

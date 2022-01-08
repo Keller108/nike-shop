@@ -12,7 +12,6 @@ function Favourites({
     onAddToFavourite,
     onDislikeCard,
     isLoading,
-
 }) {
     const {favourites} = React.useContext(AppContext);
 

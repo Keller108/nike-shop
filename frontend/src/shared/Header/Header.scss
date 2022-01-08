@@ -74,18 +74,14 @@
     margin: 0;
     box-sizing: border-box;
 
-    a {
-        margin-right: 25px;
-    }
-
     li {
         padding: 0;
         margin: 0;
         margin-right: 25px;
-    }
 
-    li:last-of-type {
-        margin-right: 0;
+        &:first-of-type {
+            margin-right: 10px;
+        }
     }
 }
 
@@ -121,10 +117,6 @@
     transition: all .3s;
     background-color: rgba(0,0,0,0);
     cursor: pointer;
-
-    &:hover {
-        background-image: url("../../images/heart-red.svg");
-    }
 }
 
 .header__acc-btn {
@@ -141,8 +133,4 @@
     transition: all .3s;
     background-color: rgba(0,0,0,0);
     cursor: pointer;
-
-    &:hover {
-        background-image: url("../../images/acc-red.svg");
-    }
 }
